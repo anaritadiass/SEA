@@ -1,0 +1,37 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Create a figure and axis
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Background: dry, cracked earth to simulate drought
+x = np.linspace(0, 2 * np.pi, 100)
+y = np.sin(x)
+
+# Dry, cracked earth texture
+ax.imshow(np.random.rand(100, 100), cmap='copper', extent=[0, 10, 0, 10], alpha=0.6)
+
+# Simulating dry Barceloneta beach
+ax.plot([2, 2, 8, 8], [2, 8, 8, 2], color='saddlebrown', lw=10)  # dry area
+ax.fill_betweenx([2, 8], 2, 8, color='saddlebrown', alpha=0.5)
+
+# Adding a few dry plants to simulate drought effect
+dry_plant_x = np.random.uniform(2, 8, 30)
+dry_plant_y = np.random.uniform(2, 8, 30)
+ax.scatter(dry_plant_x, dry_plant_y, color='darkolivegreen', marker='x')
+
+# Adding a dry, cracked sun
+sun = plt.Circle((8, 8), 1, color='orange', fill=True)
+ax.add_artist(sun)
+
+# Title and other text to contextualize the image
+ax.text(5, 9, 'Barceloneta in Drought', fontsize=18, ha='center')
+ax.text(5, 1, 'Dry, cracked earth and parched beach', fontsize=12, ha='center')
+
+# Adjusting plot limits and turning off axes for better visualization
+ax.set_xlim(0, 10)
+ax.set_ylim(0, 10)
+ax.axis('off')
+
+# Display the image
+plt.show()
